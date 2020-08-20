@@ -1,0 +1,82 @@
+{% extends 'projectMgr/base.html' %}
+
+{% block leftnav %}
+<li><a href="{% url 'projectMgr:projectDetail' project.id %}" ><span class="glyphicon glyphicon-th-large"></span> {{project.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li><a href="{% url 'projectMgr:taskGroupDetail' project.id task.id %}" ><span class="glyphicon glyphicon-th"></span> {{task.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li class="active"><a href="" ><span class="glyphicon glyphicon-user"></span> Add people</a></li>
+
+{% endblock %}
+
+{% block tabButton %}
+    <div class="leftTabElement"><a href="{% url 'projectMgr:projectDetail' project.id %}" ><h3>{{project.name}}/</h3></a>
+            </div>
+    <div class="leftTabElement"><a href="{% url 'projectMgr:taskGroupDetail' project.id task.id %}" ><h3>{{task.name}}/</h3></a>
+            </div>
+{% endblock %}
+
+
+
+{% block body %}
+
+    {% load crispy_forms_tags %}
+
+     <form action="{% url 'projectMgr:chooseTaskGroupMates' project.id task.id %}" method="post">
+    {% csrf_token %}
+
+{#        {{ form|crispy }}#}
+
+{#        <h3> Search {{ form.search }} <input type="submit" class="cleanButton2" value="Find"></h3>#}
+     {{ form|crispy }}
+     <input type="submit" value="Find" class="btn btn-primary" >
+         <hr>
+
+    </form>
+
+
+    <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">username</th>
+      <th scope="col">email</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for person in results %}
+      <tr>
+
+          <th scope="row"> <a href="{% url 'projectMgr:addToTaskGroup' project.id task.id person.id %}"> <span class="glyphicon glyphicon-plus"></span> </a></th>
+      <td>{{person.username}}</td>
+      <td>
+          {{person.email}}
+      </td>
+
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+
+    <button class="btn btn-primary" onclick="window.location.href = '{% url 'projectMgr:taskGroupDetail' project.id task.id %}';">Done</button>
+
+
+
+{% endblock %}
+
+{% block sidenav %}
+    <h4>Task group Team</h4>
+    <hr>
+
+    {% for person in task.people.all %}
+
+            <p><a style="margin: 3px"  href="">{{ person.username }} <span class="glyphicon glyphicon-user"></span></a></p>
+
+        {% endfor %}
+{#    <a href="{% url 'projectMgr:createTaskGroup' project.id%}" class="btn btn-primary">Add <span class="glyphicon glyphicon-plus"></span> </a>#}
+
+{% endblock %}

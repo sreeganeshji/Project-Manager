@@ -1,0 +1,238 @@
+{% extends 'projectMgr/base.html' %}
+
+{% block leftnav %}
+<li><a href="{% url 'projectMgr:projectDetail' project.id %}" ><span class="glyphicon glyphicon-th-large"></span> {{project.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li class="active"><a  href="{% url 'projectMgr:taskGroupDetail' project.id taskGroup.id %}" ><span class="glyphicon glyphicon-th"></span> {{taskGroup.name}}</a></li>
+<li><a href="{% url 'projectMgr:taskGroupDetailEdit' project.id taskGroup.id %}" ><span class="glyphicon glyphicon-cog"></span></a></li>
+
+{% endblock %}
+
+
+{% block body %}
+
+    <h4>Description:</h4>
+    <p>
+    {{ taskGroup.description }}
+    </p>
+
+        <hr>
+    <div class="row">
+        <div class="col-sm-4">
+             {% if thisUser == taskGroup.creator %} Me {% else %} {{taskGroup.creator.username }} {% endif %},
+
+        {{ taskGroup.created }}
+        </div>
+    </div>
+    <hr>
+
+<h4>Kanban Board:</h4>
+    <div class="board">
+    <div class="openedBoard">
+    <h3>Opened Issues</h3>
+    {% for task in OpenIssue %}
+        {% if task.priority == "Urgent" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="urgentcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "High" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="highcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "Normal" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="normalcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "Low" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="lowcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="inprogressBoard">
+    <h3>In progress</h3>
+    {% for task in InProgress %}
+        {% if task.priority == "Urgent" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="urgentcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "High" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="highcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "Normal" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="normalcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "Low" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="lowcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="inreviewBoard">
+    <h3>In review</h3>
+    {% for task in InReview %}
+        {% if task.priority == "Urgent" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="urgentcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "High" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="highcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "Normal" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="normalcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "Low" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="lowcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% endif %}
+    {% endfor %}
+    </div>
+    <div class="closedBoard">
+    <h3>Closed Issues</h3>
+    {% for task in ClosedIssue %}
+        {% if task.priority == "Urgent" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="urgentcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "High" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="highcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "Normal" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="normalcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% elif task.priority == "Low" %}
+        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="lowcard" type="submit" value={{ task.name }}>
+        </form>
+
+        {% endif %}
+    {% endfor %}
+
+    </div>
+    </div>
+
+    <p>Task priority:<span style="color: #d8dfea" class="glyphicon glyphicon-stop"></span> Low <span style="color: #afbdd4" class="glyphicon glyphicon-stop"></span> Normal <span style="color: #6d84b4" class="glyphicon glyphicon-stop"></span> High <span style="color: #3b5998" class="glyphicon glyphicon-stop"></span> Urgent</p>
+
+<hr>
+        {% load crispy_forms_tags %}
+    <form action="{% url 'projectMgr:taskGroupDetailComment' project.id taskGroup.id%}" method="post">
+    {% csrf_token %}
+
+{{ commentForm|crispy }}
+{#        {{ commentForm.text|as_crispy_field }}#}
+    <input type="submit" class="btn btn-success" value="Post">
+
+    </form>
+
+    <hr>
+     <p><span class="badge">{{nocomm }}</span> Comments <span class="glyphicon glyphicon-comment"></span></p><br>
+
+    {% load static %}
+    {% for comment in commentSet %}
+    <div class="row">
+        <div class="col-sm-2 text-center">
+            <img src="{% static 'projectMgr/images/default_user.png' %}"  height="65" width="65" style=" border-radius: 5px" alt="">
+        </div>
+        <div class="col-sm-10">
+            <h4>
+                {% if comment.createdBy == thisUser %}
+                Me
+                {% else %}
+                {{ comment.createdBy.username }}
+                {% endif %}
+                <small>{{comment.createdOn}}</small></h4>
+            {% if comment.deleted %}
+            <p style="color: gray">This comment was deleted</p>
+            {% else %}
+            <p>{{ comment.textField }}</p>
+                {% if comment.createdBy == thisUser %}
+                     <a href="{% url 'projectMgr:taskGroupDeleteComment' project.id taskGroup.id comment.id %}" ><span class="glyphicon glyphicon-minus-sign"></span></a>
+                    {% endif %}
+            {% endif %}
+
+        </div>
+        </div>
+        <hr>
+
+    {% endfor %}
+
+    <hr>
+    {% load activity_tags i18n %}
+    <h4>Activity <a href="{% follow_url taskGroup %}">
+    {% if thisUser|is_following:taskGroup %}
+        stop following
+    {% else %}
+        follow
+    {% endif %}
+</a></h4>
+{#    {% activity_stream 'actor' thisUser %}#}
+    <table class="table">
+  <thead class="thead-light">
+
+  </thead>
+  <tbody>
+
+  {% for action in stream %}
+      <tr>
+
+   <td>{% display_action action %}</td>
+
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}
+
+
+{% block sidenav %}
+    <a href="{% url 'projectMgr:createTask' projectid=project.id taskGroupId=taskGroup.id %}" class="btn btn-primary">Task <span class="glyphicon glyphicon-plus"></span> </a>
+   <hr>
+            {% for task in taskGroup.task_set.all %}
+
+                <p><a style="margin: 3px"  href="{% url 'projectMgr:taskDetail' projectid=project.id taskGroupId=taskGroup.id taskid=task.id %}"><span class="glyphicon glyphicon-th-list"></span> {{ task.name }}</a></p>
+
+        {% endfor %}
+    <br>
+
+      <a href="{% url 'projectMgr:chooseTaskGroupMates' project.id taskGroup.id %}" class="btn btn-primary">Task Group Team <span class="glyphicon glyphicon-plus"></span> </a>
+   <hr>
+            {% for person in taskGroup.people.all %}
+                {% if person == thisUser %}
+                                <p><a style="margin: 3px"  href=""><span class="glyphicon glyphicon-user"></span> Me</a></p>
+
+                {% else %}
+            <p><a style="margin: 3px"  href=""><span class="glyphicon glyphicon-user"></span> {{ person.username }}</a></p>
+                {% endif %}
+        {% endfor %}
+    <br>
+
+{% endblock %}
+

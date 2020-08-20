@@ -1,0 +1,26 @@
+{% extends 'projectMgr/base.html' %}
+
+{% block leftnav %}
+<li><a href="{% url 'projectMgr:projectDetail' project.id %}" ><span class="glyphicon glyphicon-th-large"></span> {{project.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li><a  href="{% url 'projectMgr:taskGroupDetail' project.id taskGroup.id %}" ><span class="glyphicon glyphicon-th"></span> {{taskGroup.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li class="active"><a  href="" ><span class="glyphicon glyphicon-th-list"></span> New task</a></li>
+
+{% endblock %}
+
+
+{% block body %}
+    {% load crispy_forms_tags %}
+<form action="{% url 'projectMgr:createTask' projectid=project.id taskGroupId=taskGroup.id %}" method="post">
+{% csrf_token %}
+{#    <h3>Name: {{ form.name }}</h3>#}
+{#    <h3>Description:</h3>#}
+{#    <h3>{{ form.description }}</h3>#}
+    {{ form|crispy }}
+    <input type="submit" class="btn btn-primary" value="choose team">
+
+</form>
+
+{% endblock %}
+

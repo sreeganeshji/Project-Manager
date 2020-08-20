@@ -1,0 +1,47 @@
+
+{% extends 'projectMgr/base.html' %}
+
+{% block leftnav %}
+<li><a href="{% url 'projectMgr:projectDetail' project.id %}" ><span class="glyphicon glyphicon-th-large"></span> {{project.name}}</a></li>
+<li class="active"><a href="{% url 'projectMgr:projectDetailEdit' project.id  %}" ><span class="glyphicon glyphicon-cog"></span></a></li>
+
+{% endblock %}
+
+{% block body %}
+    {% load crispy_forms_tags %}
+    <form action="{% url 'projectMgr:projectDetailEdit' project.id %}" method="post">
+    {% csrf_token %}
+{#    <h3>#}
+{#        Name: {{ form.name }}#}
+{#    </h3>#}
+{#        <h3>Description:</h3>#}
+{#        <h3>{{ form.description }}</h3>#}
+
+    {{ form|crispy }}
+    <input type="submit" class="btn btn-primary" value="Done">
+    </form>
+
+
+{% endblock %}
+
+{% block sidenav %}
+    <a href="{% url 'projectMgr:createTaskGroup' project.id%}" class="btn btn-primary">Task Group <span class="glyphicon glyphicon-plus"></span> </a>
+   <hr>
+            {% for task in project.taskgroup_set.all %}
+
+                <p><a style="margin: 3px"  href="{% url 'projectMgr:taskGroupDetail' projectid=project.id taskGroupId=task.id %}"><span class="glyphicon glyphicon-th"></span> {{ task.name }}</a><a style="margin: 3px"  href="{% url 'projectMgr:taskGroupRemove' project.id task.id %}"><span class="glyphicon glyphicon-minus-sign"></span></a></p>
+
+        {% endfor %}
+    <br>
+
+      <a href="{% url 'projectMgr:chooseProjectMates' project.id %}" class="btn btn-primary">Project Team <span class="glyphicon glyphicon-plus"></span> </a>
+   <hr>
+            {% for person in project.people.all %}
+
+            <p><a style="margin: 3px"  href=""><span class="glyphicon glyphicon-user"></span> {{ person.username }}</a><a style="margin: 3px"  href="{% url 'projectMgr:projectMateRemove' project.id person.id %}"><span class="glyphicon glyphicon-minus-sign"></span></a></p>
+
+        {% endfor %}
+    <br>
+
+{% endblock %}
+

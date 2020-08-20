@@ -1,0 +1,17 @@
+{% extends 'projectMgr/base.html' %}
+
+{% block leftnav %}
+<li class="active"><a href="" ><span class="glyphicon glyphicon-th-large"></span> New project</a></li>
+{% endblock %}
+
+{% block body %}
+    {% load crispy_forms_tags %}
+<form action="{% url 'projectMgr:projectCreate' %}" method="post">
+{% csrf_token %}
+    {{ form|crispy }}
+
+    <input class="btn btn-primary" type="submit" name="choose team" value="choose team">
+    <input class="btn btn-success" type="submit" name="Done" value="Done">
+</form>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+
+{% extends 'projectMgr/base.html' %}
+
+{% block leftnav %}
+<li><a href="{% url 'projectMgr:projectDetail' project.id %}" ><span class="glyphicon glyphicon-th-large"></span> {{project.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li><a  href="{% url 'projectMgr:taskGroupDetail' project.id taskGroup.id %}" ><span class="glyphicon glyphicon-th"></span> {{taskGroup.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li><a  href="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}" ><span class="glyphicon glyphicon-th-list"></span> {{ task.name }}</a></li>
+<li class="active"><a href="{% url 'projectMgr:taskDetailEdit' project.id taskGroup.id task.id %}" ><span class="glyphicon glyphicon-cog"></span></a></li>
+
+{% endblock %}
+
+
+{% block body %}
+
+    {% load crispy_forms_tags %}
+    <form action="{% url 'projectMgr:taskDetailEdit' project.id taskGroup.id task.id %}" method="post">
+    {% csrf_token %}
+
+
+            {{ form|crispy}}
+
+
+    <input type="submit" class="btn btn-primary" value="Done">
+    </form>
+
+
+{% endblock %}
+
+{% block sidenav %}
+
+
+      <a href="{% url 'projectMgr:chooseTaskMates' project.id taskGroup.id task.id %}" class="btn btn-primary">Task Team <span class="glyphicon glyphicon-plus"></span> </a>
+   <hr>
+            {% for person in taskGroup.people.all %}
+             {% if person == thisUser %}
+                <p><a style="margin: 3px"  href=""><span class="glyphicon glyphicon-user"></span> Me</a><a style="margin: 3px"  href="{% url 'projectMgr:taskMateRemove' project.id taskGroup.id task.id person.id %}"><span class="glyphicon glyphicon-minus-sign"></span></a></p>
+
+                {% else %}
+            <p><a style="margin: 3px"  href=""><span class="glyphicon glyphicon-user"></span> {{ person.username }}</a><a style="margin: 3px"  href="{% url 'projectMgr:taskMateRemove' project.id taskGroup.id task.id person.id %}"><span class="glyphicon glyphicon-minus-sign"></span></a></p>
+            {% endif %}
+        {% endfor %}
+    <br>
+
+{% endblock %}
+

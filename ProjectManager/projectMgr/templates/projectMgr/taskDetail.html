@@ -1,0 +1,123 @@
+{% extends 'projectMgr/base.html' %}
+
+{% block leftnav %}
+<li><a href="{% url 'projectMgr:projectDetail' project.id %}" ><span class="glyphicon glyphicon-th-large"></span> {{project.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li><a  href="{% url 'projectMgr:taskGroupDetail' project.id taskGroup.id %}" ><span class="glyphicon glyphicon-th"></span> {{taskGroup.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li class="active"><a  href="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}" ><span class="glyphicon glyphicon-th-list"></span> {{ task.name }}</a></li>
+<li><a href="{% url 'projectMgr:taskDetailEdit' project.id taskGroup.id task.id %}" ><span class="glyphicon glyphicon-cog"></span></a></li>
+
+{% endblock %}
+
+
+{% block body %}
+    <h4>Description:</h4>
+    <div>
+    {{ task.description }}
+    </div>
+
+
+
+      <hr>
+    <div class="row">
+        <div class="col-sm-4">
+            <p>Priority: {{ task.priority }}</p>
+             {% if thisUser == task.reporter %} Me {% else %} {{task.reporter.username }} {% endif %}
+
+        , {{ task.created }}
+        </div>
+    </div>
+    <hr>
+
+        {% load crispy_forms_tags %}
+    <form action="{% url 'projectMgr:taskDetailComment' project.id taskGroup.id task.id %}" method="post">
+    {% csrf_token %}
+
+{{ commentForm|crispy }}
+{#        {{ commentForm.text|as_crispy_field }}#}
+    <input type="submit" class="btn btn-success" value="Post">
+
+    </form>
+
+    <hr>
+     <p><span class="badge">{{nocomm }}</span> Comments <span class="glyphicon glyphicon-comment"></span></p><br>
+
+    {% load static %}
+    {% for comment in commentSet %}
+    <div class="row">
+        <div class="col-sm-2 text-center">
+            <img src="{% static 'projectMgr/images/default_user.png' %}"  height="65" width="65" style=" border-radius: 5px" alt="">
+        </div>
+        <div class="col-sm-10">
+            <h4>
+                {% if comment.createdBy == thisUser %}
+                Me
+                {% else %}
+                {{ comment.createdBy.username }}
+                {% endif %}
+                <small>{{comment.createdOn}}</small></h4>
+            {% if comment.deleted %}
+            <p style="color: gray">This comment was deleted</p>
+            {% else %}
+            <p>{{ comment.textField }}</p>
+                {% if comment.createdBy == thisUser %}
+                     <a href="{% url 'projectMgr:taskDeleteComment' project.id taskGroup.id task.id comment.id %}" ><span class="glyphicon glyphicon-minus-sign"></span></a>
+                    {% endif %}
+            {% endif %}
+
+        </div>
+        </div>
+        <hr>
+
+    {% endfor %}
+
+    <hr>
+    {% load activity_tags i18n %}
+    <h4>Activity <a href="{% follow_url task %}">
+    {% if thisUser|is_following:task %}
+        stop following
+    {% else %}
+        follow
+    {% endif %}
+</a></h4>
+{#    {% activity_stream 'actor' thisUser %}#}
+    <table class="table">
+  <thead class="thead-light">
+
+  </thead>
+  <tbody>
+
+  {% for action in stream %}
+      <tr>
+
+   <td>{% display_action action %}</td>
+
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+
+{% endblock %}
+
+
+
+{% block sidenav %}
+
+
+      <a href="{% url 'projectMgr:chooseTaskMates' project.id taskGroup.id task.id %}" class="btn btn-primary">Task Team <span class="glyphicon glyphicon-plus"></span> </a>
+   <hr>
+            {% for person in task.people.all %}
+             {% if person == thisUser %}
+                <p><a style="margin: 3px"  href=""><span class="glyphicon glyphicon-user"></span> Me</a></p>
+
+                {% else %}
+            <p><a style="margin: 3px"  href=""><span class="glyphicon glyphicon-user"></span> {{ person.username }}</a></p>
+            {% endif %}
+        {% endfor %}
+    <br>
+
+{% endblock %}
+

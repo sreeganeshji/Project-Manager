@@ -1,0 +1,11 @@
+{% extends 'projectMgr/base.html' %}
+
+{% block body %}
+
+{#    Change email, password#}
+    <h4>Username: {{ user.username }}</h4>
+    <h4>Email: {{ user.email }}
+        <a href="{% url 'account_email' %}">Change email</a> </h4>
+    <h4><a href="{% url 'account_change_password' %}">Change password</a> </h4>
+
+{% endblock %}

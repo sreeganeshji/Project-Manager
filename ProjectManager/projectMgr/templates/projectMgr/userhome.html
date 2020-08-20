@@ -1,0 +1,124 @@
+{%  extends "projectMgr/base.html" %}
+
+
+{% block body %}
+{% if user.task_set.count > 0 %}
+
+    <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Project</th>
+      <th scope="col">Task</th>
+      <th scope="col">Priority</th>
+        <th scope="col">Description</th>
+
+    </tr>
+  </thead>
+  <tbody>
+{{ user.task_set.count }}
+
+     {% for task in user.task_set.all %}
+
+              <tr>
+
+          <th scope="row">
+              <a href="{% url 'projectMgr:projectDetail' task.taskGroup.project.id %}">{{ task.taskGroup.project.name }}</a>
+          </th>
+
+      <td>
+      <a href="{% url 'projectMgr:taskDetail' task.taskGroup.project.id task.taskGroup.id task.id %}">{{ task.name }}</a>
+
+      </td>
+      <td>
+          {{ task.priority }}
+      </td>
+              <td>
+                  {{ task.description }}
+              </td>
+    </tr>
+
+        {% endfor %}
+
+  {% else %}
+
+    <h4>Your tasks will appear here</h4>
+
+  {% endif %}
+
+
+  </tbody>
+</table>
+<hr>
+
+   <h4>Notifications </h4>
+
+
+{% load activity_tags i18n %}
+
+    {% for messages in listSet %}
+{#        {% for message in messages %}#}
+{#            {% display_action message %}#}
+{#            {% endfor %}#}
+
+
+          <table class="table">
+  <thead class="thead-light">
+
+  </thead>
+  <tbody>
+
+  {% for message in messages %}
+      <tr>
+
+   <td>{% display_action message %}</td>
+
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+
+    {% endfor %}
+{#    {% for followingObject in following %}#}
+{#    followingObject.name#}
+{#    {% endfor %}#}
+
+{% endblock %}
+
+{% block sidenav %}
+
+    <a href="{% url 'projectMgr:projectCreate' %}" class="btn btn-primary">Project <span class="glyphicon glyphicon-plus"></span> </a>
+
+            <hr>
+        {% for project in user.project_set.all %}
+
+            <p><a style="margin: 3px"  href="{% url 'projectMgr:projectDetail' project.id %}">{{ project.name }} <span class="glyphicon glyphicon-th-large"></span></a></p>
+
+        {% endfor %}
+{% endblock %}
+
+
+{% block sidebar %}
+
+     <form action="{% url 'projectMgr:projectCreate' %}">
+        <div class="sidebarHead"> Projects
+        <input class="add" type="submit" value="+">
+        </div>
+    </form>
+
+
+
+
+        {% for project in user.project_set.all %}
+
+            <a  class="sidebarText" href="{% url 'projectMgr:projectDetail' project.id %}">{{ project.name }}</a>
+
+
+
+        {% endfor %}
+
+
+
+{% endblock %}
+

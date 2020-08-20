@@ -1,0 +1,76 @@
+{% extends 'projectMgr/base.html' %}
+
+{% block heading %}
+    Select Project Team
+{% endblock %}
+
+{% block leftnav %}
+<li><a href="{% url 'projectMgr:projectDetail' project.id %}" ><span class="glyphicon glyphicon-th-large"></span> {{project.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li class="active"><a  href="" ><span class="glyphicon glyphicon-user"></span> Add people</a></li>
+
+{% endblock %}
+
+{% block tabButton %}
+<div class="leftTabElement"><a href="{% url 'projectMgr:projectDetail' project.id %}" ><h3>{{project.name}}/</h3></a>
+            </div>
+     <div class="leftTabElement"><a href="{% url 'projectMgr:projectDetailEdit' project.id  %}" ><h3>Edit</h3></a>
+            </div>
+{% endblock %}
+
+{% block body %}
+
+    {% load crispy_forms_tags %}
+    <form action="{% url 'projectMgr:chooseProjectMates' project.id %}" method="post">
+    {% csrf_token %}
+
+        {{ form|crispy }}
+{#    {{ form.search|as_crispy_field }}#}
+        <input type="submit" class="btn btn-primary" value="Find">
+{#        {{ form.searchType|as_crispy_field }}#}
+
+    </form>
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">username</th>
+      <th scope="col">email</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for person in results %}
+      <tr>
+
+          <th scope="row"> <a href="{% url 'projectMgr:addToProject' project.id person.id %}"> <span class="glyphicon glyphicon-plus"></span> </a></th>
+      <td>{{person.username}}</td>
+      <td>
+          {{person.email}}
+      </td>
+
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+
+    <button class="btn btn-primary" onclick="window.location.href = '{% url 'projectMgr:projectDetail' project.id %}';">Done</button>
+
+
+
+{% endblock %}
+
+{% block sidenav %}
+    <h4>Project Team</h4>
+    {% for person in project.people.all %}
+<p><a href="{% url 'projectMgr:signup' %}"> {{ person.username }}</a> </p>
+
+
+{% endfor %}
+
+{% endblock %}
+

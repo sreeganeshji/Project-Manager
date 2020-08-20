@@ -1,0 +1,103 @@
+{% extends 'projectMgr/base.html' %}
+
+
+{% block leftnav %}
+<li><a href="{% url 'projectMgr:projectDetail' project.id %}" ><span class="glyphicon glyphicon-th-large"></span> {{project.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li><a  href="{% url 'projectMgr:taskGroupDetail' project.id taskGroup.id %}" ><span class="glyphicon glyphicon-th"></span> {{taskGroup.name}}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+<li><a  href="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}" ><span class="glyphicon glyphicon-th-list"></span> {{ task.name }}</a></li>
+<li><a href="" ><span class="glyphicon glyphicon-menu-right"></span></a></li>
+    <li class="active"><a  href="" ><span class="glyphicon glyphicon-user"></span> Add people</a></li>
+
+{% endblock %}
+
+
+{% block body %}
+
+        {% load crispy_forms_tags %}
+
+     <form action="{% url 'projectMgr:chooseTaskMates' projectid=project.id taskGroupId=taskGroup.id taskid=task.id %}" method="post">
+    {% csrf_token %}
+
+     {{ form|crispy }}
+     <input type="submit" value="Find" class="btn btn-primary" >
+         <hr>
+
+    </form>
+
+        <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">username</th>
+      <th scope="col">email</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for person in results %}
+      <tr>
+
+          <th scope="row"> <a href="{% url 'projectMgr:addToTask' project.id taskGroup.id task.id person.id %}"> <span class="glyphicon glyphicon-plus"></span> </a></th>
+      <td>{{person.username}}</td>
+      <td>
+          {{person.email}}
+      </td>
+
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+
+    <button class="btn btn-primary" onclick="window.location.href = '{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}';">Done</button>
+
+
+
+{% endblock %}
+
+
+
+{% block sidebar %}
+{#<a href="{% url 'projectMgr:chooseProjectMates' projectid=project.id %}">Add people to {{ project.name }}</a>#}
+
+    <form action="{% url 'projectMgr:chooseTaskMates' project.id taskGroup.id task.id %}">
+        <h3>
+            Assignee
+{#        <input class="add" type="submit" value="+">#}
+        </h3>
+    </form>
+
+
+<ul>
+{% for person in task.people.all %}
+<div >
+{% if person == thisUser %}
+    Me
+    {% else %}
+    {{person.username}}
+    {% endif %}
+</div>
+
+{% endfor %}
+</ul>
+{% endblock %}
+
+{% block sidenav %}
+    <h4>Task Team</h4>
+    <hr>
+
+    {% for person in task.people.all %}
+            {% if person == thisUser %}
+                    <p><a style="margin: 3px"  href=""><span class="glyphicon glyphicon-user"></span> Me</a></p>
+
+        {% else %}
+            <p><a style="margin: 3px"  href=""><span class="glyphicon glyphicon-user"></span> {{ person.username }}</a></p>
+
+        {% endif %}
+        {% endfor %}
+
+{% endblock %}

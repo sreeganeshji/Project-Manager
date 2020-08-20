@@ -1,0 +1,14 @@
+{% extends 'projectMgr/base.html' %}
+
+{%  block body %}
+
+    {% load crispy_forms_tags %}
+    <form action="{% url 'projectMgr:signup' %}" method="post">
+{% csrf_token %}
+        {{ form|crispy }}
+        <input class="btn btn-primary" type="submit" value="Sign Up">
+
+    </form>
+
+{% endblock %}
+

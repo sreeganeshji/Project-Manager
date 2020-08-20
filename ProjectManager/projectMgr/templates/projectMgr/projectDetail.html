@@ -1,0 +1,131 @@
+{% extends 'projectMgr/base.html' %}
+
+{% block leftnav %}
+<li class="active"><a href="{% url 'projectMgr:projectDetail' project.id %}" ><span class="glyphicon glyphicon-th-large"></span> {{project.name}}</a></li>
+<li><a href="{% url 'projectMgr:projectDetailEdit' project.id  %}" ><span class="glyphicon glyphicon-cog"></span></a></li>
+
+{% endblock %}
+
+{% block tabButton %}
+<div class="leftTabElement"><a href="{% url 'projectMgr:projectDetail' project.id %}" ><h3>{{project.name}}</h3></a>
+            </div>
+  <div class="leftTabElement"><a href="{% url 'projectMgr:projectDetailEdit' project.id  %}" ><h3>Edit</h3></a>
+            </div>
+{% endblock %}
+
+{% block heading %}
+    Project {{ project.name }}
+{% endblock %}
+
+{% block body %}
+    <h4 >Description</h4>
+    <div >
+    <p>{{ project.description }}</p>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4">
+             {% if thisUser == project.createdBy %} Me {% else %} {{project.createdBy.username }} {% endif %},
+
+        {{ project.created }}
+        </div>
+    </div>
+    <hr>
+
+    {% load crispy_forms_tags %}
+    <form action="{% url 'projectMgr:projectDetailComment' project.id %}" method="post">
+    {% csrf_token %}
+
+{{ commentForm|crispy }}
+{#        {{ commentForm.text|as_crispy_field }}#}
+    <input type="submit" class="btn btn-success" value="Post">
+
+    </form>
+
+    <hr>
+     <p><span class="badge">{{nocomm }}</span> Comments <span class="glyphicon glyphicon-comment"></span></p><br>
+
+    {% load static %}
+    {% for comment in commentSet %}
+    <div class="row">
+        <div class="col-sm-2 text-center">
+            <img src="{% static 'projectMgr/images/default_user.png' %}"  height="65" width="65" style=" border-radius: 5px" alt="">
+        </div>
+        <div class="col-sm-10">
+            <h4>
+                {% if comment.createdBy == thisUser %}
+                Me
+                {% else %}
+                {{ comment.createdBy.username }}
+                {% endif %}
+                <small>{{comment.createdOn}}</small></h4>
+            {% if comment.deleted %}
+            <p style="color: gray">This comment was deleted</p>
+            {% else %}
+            <p>{{ comment.textField }}</p>
+                {% if comment.createdBy == thisUser %}
+                     <a href="{% url 'projectMgr:projectDeleteComment' project.id comment.id %}" ><span class="glyphicon glyphicon-minus-sign"></span></a>
+                    {% endif %}
+            {% endif %}
+
+        </div>
+        </div>
+        <hr>
+
+
+    {% endfor %}
+
+<hr>
+    {% load activity_tags i18n %}
+    <h4>Activity <a href="{% follow_url project %}">
+    {% if thisUser|is_following:project %}
+        stop following
+    {% else %}
+        follow
+    {% endif %}
+</a></h4>
+{#    {% activity_stream 'actor' thisUser %}#}
+    <table class="table">
+  <thead class="thead-light">
+
+  </thead>
+  <tbody>
+
+  {% for action in stream %}
+      <tr>
+
+   <td>{% display_action action %}</td>
+
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}
+
+{% block sidenav %}
+    <a href="{% url 'projectMgr:createTaskGroup' project.id%}" class="btn btn-primary">Task Group <span class="glyphicon glyphicon-plus"></span> </a>
+   <hr>
+            {% for task in project.taskgroup_set.all %}
+
+                <p><a style="margin: 3px"  href="{% url 'projectMgr:taskGroupDetail' projectid=project.id taskGroupId=task.id %}"><span class="glyphicon glyphicon-th"></span> {{ task.name }}</a></p>
+
+        {% endfor %}
+    <br>
+
+      <a href="{% url 'projectMgr:chooseProjectMates' project.id %}" class="btn btn-primary">Project Team <span class="glyphicon glyphicon-plus"></span> </a>
+   <hr>
+            {% for person in project.people.all %}
+            {% if person == thisUser %}
+                            <p><a style="margin: 3px"  href=""><span class="glyphicon glyphicon-user"></span> Me</a></p>
+
+                {% else %}
+            <p><a style="margin: 3px"  href=""><span class="glyphicon glyphicon-user"></span> {{ person.username }}</a></p>
+                {% endif %}
+        {% endfor %}
+    <br>
+
+{% endblock %}
