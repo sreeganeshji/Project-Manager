@@ -1,0 +1,20 @@
+Binary file ./projectMgr/migrations/__pycache__/0001_initial.cpython-37.pyc matches
+./projectMgr/migrations/0001_initial.py:class Migration(migrations.Migration):
+./actstream/migrations/0002_remove_action_data.py:class Migration(migrations.Migration):
+./actstream/migrations/0003_add_follow_flag.py:class Migration(migrations.Migration):
+Binary file ./actstream/migrations/__pycache__/0003_add_follow_flag.cpython-37.pyc matches
+Binary file ./actstream/migrations/__pycache__/0001_initial.cpython-37.pyc matches
+Binary file ./actstream/migrations/__pycache__/0002_remove_action_data.cpython-37.pyc matches
+./actstream/migrations/0001_initial.py:class Migration(migrations.Migration):
+Binary file ./allauth/socialaccount/migrations/__pycache__/0001_initial.cpython-37.pyc matches
+Binary file ./allauth/socialaccount/migrations/__pycache__/0002_auto_20200614_0534.cpython-37.pyc matches
+./allauth/socialaccount/migrations/0002_auto_20200614_0534.py:class Migration(migrations.Migration):
+./allauth/socialaccount/migrations/0001_initial.py:class Migration(migrations.Migration):
+./allauth/account/migrations/0002_emailaddress_user.py:class Migration(migrations.Migration):
+Binary file ./allauth/account/migrations/__pycache__/0001_initial.cpython-37.pyc matches
+Binary file ./allauth/account/migrations/__pycache__/0002_emailaddress_user.cpython-37.pyc matches
+./allauth/account/migrations/0001_initial.py:class Migration(migrations.Migration):
+./rest_framework/authtoken/migrations/0002_auto_20160226_1747.py:class Migration(migrations.Migration):
+Binary file ./rest_framework/authtoken/migrations/__pycache__/0001_initial.cpython-37.pyc matches
+Binary file ./rest_framework/authtoken/migrations/__pycache__/0002_auto_20160226_1747.cpython-37.pyc matches
+./rest_framework/authtoken/migrations/0001_initial.py:class Migration(migrations.Migration):

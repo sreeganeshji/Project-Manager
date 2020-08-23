@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8d5299d4-c98b-454a-ba3d-2c339b631c9c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManagerAws/.wsgi.py.swp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actstream/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/actstream/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actstream/migrations/0002_auto_20200614_0624.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allauth/account/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/allauth/account/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allauth/account/migrations/0002_emailaddress_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/allauth/account/migrations/0002_emailaddress_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allauth/socialaccount/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/allauth/socialaccount/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectMgr/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectMgr/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectMgr/templates/projectMgr/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/projectMgr/templates/projectMgr/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectMgr/templates/projectMgr/userinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/projectMgr/templates/projectMgr/userinfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectMgr/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectMgr/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest_framework/authtoken/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/rest_framework/authtoken/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest_framework/authtoken/migrations/0002_token_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/rest_framework/authtoken/migrations/0002_token_user.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1Xwy0gZm8HOkBBglQxIT82yPHpC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/projectMgr" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/projectMgr/templates/projectMgr" />
+      <recent name="$PROJECT_DIR$/projectMgr/static/projectMgr" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ProjectManagerAws" type="Python.DjangoServer" factoryName="Django server">
+      <module name="ProjectManagerAws" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8d5299d4-c98b-454a-ba3d-2c339b631c9c" name="Default Changelist" comment="" />
+      <created>1581971229941</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581971229941</updated>
+      <workItem from="1581971232221" duration="41802000" />
+      <workItem from="1583983413038" duration="155000" />
+      <workItem from="1597808622093" duration="6642000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+</project>

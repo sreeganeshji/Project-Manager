@@ -1,0 +1,20 @@
+2020-04-04 09:17:46.344 PDT [4332] FATAL:  data directory "/Users/ganesh/Desktop/OMSCS/ProjectManagerV2/ProjectManagerAws/mydb" has invalid permissions
+2020-04-04 09:17:46.344 PDT [4332] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
+2020-04-05 16:56:12.166 PDT [5888] FATAL:  data directory "/Users/ganesh/Desktop/OMSCS/ProjectManagerV2/ProjectManagerAws/mydb" has invalid permissions
+2020-04-05 16:56:12.166 PDT [5888] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
+2020-04-05 16:58:33.352 PDT [5935] FATAL:  data directory "/Users/ganesh/Desktop/OMSCS/ProjectManagerV2/ProjectManagerAws/mydb" has invalid permissions
+2020-04-05 16:58:33.352 PDT [5935] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
+2020-04-05 16:59:14.930 PDT [5944] FATAL:  data directory "/Users/ganesh/Desktop/OMSCS/ProjectManagerV2/ProjectManagerAws/mydb" has invalid permissions
+2020-04-05 16:59:14.930 PDT [5944] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
+2020-04-05 17:03:19.386 PDT [5990] FATAL:  data directory "/Users/ganesh/Desktop/OMSCS/ProjectManagerV2/ProjectManagerAws/mydb" has invalid permissions
+2020-04-05 17:03:19.386 PDT [5990] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
+2020-04-05 17:03:52.495 PDT [6001] FATAL:  data directory "/Users/ganesh/Desktop/OMSCS/ProjectManagerV2/ProjectManagerAws/mydb" has invalid permissions
+2020-04-05 17:03:52.495 PDT [6001] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
+2020-04-05 17:05:40.759 PDT [6029] FATAL:  lock file "postmaster.pid" already exists
+2020-04-05 17:05:40.759 PDT [6029] HINT:  Is another postmaster (PID 5980) running in data directory "/Users/ganesh/Desktop/OMSCS/ProjectManagerV2/ProjectManagerAws/mydb"?
+2020-04-05 17:09:40.045 PDT [6080] FATAL:  data directory "/Users/ganesh/Desktop/OMSCS/ProjectManagerV2/ProjectManagerAws/mydb" has invalid permissions
+2020-04-05 17:09:40.045 PDT [6080] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
+2020-04-05 17:10:37.315 PDT [6094] FATAL:  data directory "/Users/ganesh/Desktop/OMSCS/ProjectManagerV2/ProjectManagerAws/mydb" has invalid permissions
+2020-04-05 17:10:37.315 PDT [6094] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
+2020-04-05 17:11:00.030 PDT [6099] FATAL:  lock file "postmaster.pid" already exists
+2020-04-05 17:11:00.030 PDT [6099] HINT:  Is another postmaster (PID 6070) running in data directory "/Users/ganesh/Desktop/OMSCS/ProjectManagerV2/ProjectManagerAws/mydb"?

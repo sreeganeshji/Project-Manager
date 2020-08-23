@@ -1,0 +1,101 @@
+{% extends 'projectMgr/base.html' %}
+{% block body %}
+{#    <h3 style="text-align: center; color: #2c4096">Project Manager</h3>#}
+    <h2 style="text-align: center;color: #6d84b4">Project management tool</h2>
+
+
+{#    <h4 style="text-align: center; color: #6d84b4">Collaborative tool to interactively work on tasks</h4>#}
+
+
+
+{#  <head>#}
+{#    <meta charset="utf-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">#}
+{#    <meta name="description" content="">#}
+{#    <meta name="author" content="">#}
+{#    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">#}
+{##}
+{#    <title>Product example for Bootstrap</title>#}
+{##}
+{#    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">#}
+{##}
+{#    <!-- Bootstrap core CSS -->#}
+{#    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">#}
+{##}
+{#    <!-- Custom styles for this template -->#}
+{#    <link href="product.css" rel="stylesheet">#}
+{#  </head>#}
+
+  <body>
+
+{#    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">#}
+{#      <div class="col-md-5 p-lg-5 mx-auto my-5">#}
+{#        <h2 class="display-4 font-weight-normal">Collaboration</h2>#}
+{#        <p class="lead font-weight-normal">Work on projects interactively with kanban boards, comments and <a href="https://github.com/justquick/django-activity-stream">activities</a>.</p>#}
+{#{% load static %}#}
+{#                      <img src="{% static 'projectMgr/images/taskgroup1.png' %}"  height="600" width="400" style=" border-radius: 5px" alt="">#}
+{##}
+          {#        <a class="btn btn-outline-secondary" href="#">Coming soon</a>#}
+{#      </div>#}
+{#      <div class="product-device box-shadow d-none d-md-block"></div>#}
+{#      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>#}
+{#    </div>#}
+
+{#    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">#}
+{#      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">#}
+{#        <div class="my-3 py-3">#}
+{#          <h2 class="display-5">Scalability</h2>#}
+{#          <p class="lead">Integrated with Postgresql database and <a href="https://www.django-rest-framework.org">REST framework</a> to enable large scale projects</p>#}
+{#            {% load static %}#}
+{##}
+{#            <img src="{% static 'projectMgr/images/rest1.png' %}"  height="500" width="300" style=" border-radius: 5px" alt="">#}
+{#        </div>#}
+{#        <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>#}
+{#      </div>#}
+{#      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">#}
+{#        <div class="my-3 p-3">#}
+{#          <h2 class="display-5">Security</h2>#}
+{#          <p class="lead">Utilizes <a href="https://github.com/pennersr/django-allauth">django-allauth </a> OAuth implementation for secure login features.</p>#}
+{#        </div>#}
+{#        <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>#}
+{#      </div>#}
+{#    </div>#}
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h3 class="display-5">Collaborate</h3>
+          <p class="lead">Work on projects interactively with kanban boards, comments and <a href="https://github.com/justquick/django-activity-stream">activities</a>.
+
+              {% load static %}
+          <img src="{% static 'projectMgr/images/taskgroup1.png' %}"  height="100%" width="100%" style=" border-radius: 5px" alt="">
+
+          </p>
+        </div>
+{#        <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>#}
+{#      </div>#}
+<hr>
+    </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h3 class="display-5">Scale</h3>
+          <p class="lead">Integrated with Postgresql database and <a href="https://www.django-rest-framework.org">REST framework</a> to enable large scale projects</p>
+
+              {% load static %}
+          <img src="{% static 'projectMgr/images/rest1.png' %}"  height="100%" width="60%" style=" border-radius: 5px" alt="">
+
+          </p>
+        </div>
+    </div>
+    </div>
+    </div>
+
+  </body>
+
+
+
+{% endblock %}
+
+

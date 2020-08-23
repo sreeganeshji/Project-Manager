@@ -1,0 +1,2 @@
+2020-04-04 09:17:20.129 PDT [4326] FATAL:  data directory "/Users/ganesh/Desktop/OMSCS/ProjectManagerV2/ProjectManagerAws/mydb" has invalid permissions
+2020-04-04 09:17:20.129 PDT [4326] DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).
