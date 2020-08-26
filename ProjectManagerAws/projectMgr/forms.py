@@ -24,7 +24,7 @@ class createProject(forms.Form):
     people
     '''
     name = forms.CharField(max_length=100)
-    description = forms.CharField(widget=forms.Textarea)
+    description = forms.CharField(widget=forms.Textarea, required=False)
 
 
     pass
@@ -108,7 +108,7 @@ class createTaskgroup(forms.Form):
     tasks:
     '''
     name = forms.CharField(max_length=100)
-    description = forms.CharField(widget=forms.Textarea)
+    description = forms.CharField(widget=forms.Textarea,required=False)
 
     pass
 
@@ -124,7 +124,7 @@ class createTask(forms.Form):
 
     '''
     name = forms.CharField(max_length=100)
-    description = forms.CharField(widget=forms.Textarea)
+    description = forms.CharField(widget=forms.Textarea, required=False)
     stage = forms.ChoiceField(choices=[['OpenedIssue', 'OpenedIssue'], ['InProgress', 'InProgress'], ['InReview', 'InReview'],
                  ['ClosedIssue', 'ClosedIssue']])
     priority = forms.ChoiceField(choices=[['Normal', 'Normal'], ["Urgent", "Urgent"], ['High', 'High'], ['low', 'low']])

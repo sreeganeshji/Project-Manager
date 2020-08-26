@@ -17,6 +17,7 @@ from actstream.models import actor_stream
 from actstream.models import action_object_stream
 from actstream.models import target_stream
 from actstream.models import followers, following
+from actstream.actions import follow, unfollow
 
 from allauth.account.forms import LoginForm, SignupForm
 
@@ -192,6 +193,16 @@ def projectDetail(request: HttpRequest, projectid):
 
     pass
 
+def followProject(request:HttpRequest, projectid):
+    if not request.user.is_authenticated:
+        return redirect('projectMgr:homepage')
+    thisProject = models.Project.objects.get(id=projectid)
+    if thisProject in following(request.user, models.Project):
+        unfollow(request.user, thisProject)
+    else:
+        follow(request.user, thisProject)
+
+    return redirect('projectMgr:projectDetail',projectid=projectid)
 
 def projectDetailEdit(request: HttpRequest, projectid):
     if not request.user.is_authenticated:
