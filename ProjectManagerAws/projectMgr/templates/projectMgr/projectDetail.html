@@ -46,10 +46,17 @@
      <p><span class="badge">{{nocomm }}</span> Comments <span class="glyphicon glyphicon-comment"></span></p><br>
 
     {% load static %}
+
     {% for comment in commentSet %}
+
     <div class="row">
         <div class="col-sm-2 text-center">
-            <img src="{% static 'projectMgr/images/default_user.png' %}"  height="65" width="65" style=" border-radius: 5px" alt="">
+            {% if comment.createdBy.profilePicture != None %}
+
+            <img src=/{{ comment.createdBy.profilePicture }}  height="65" width="65" style=" border-radius: 5px" alt="">
+            {% else %}
+                <img src="{% static 'projectMgr/images/default_user.png' %}"  height="65" width="65" style=" border-radius: 5px" alt="">
+            {% endif %}
         </div>
         <div class="col-sm-10">
             <h4>

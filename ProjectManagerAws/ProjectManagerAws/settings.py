@@ -310,8 +310,11 @@ STATIC_ROOT = 'static'
 
 AUTH_USER_MODEL = 'projectMgr.User'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+MEDIA_URL = '/media/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #rest framework
 REST_FRAMEWORK = {

@@ -1,0 +1,13 @@
+{% extends 'projectMgr/base.html' %}
+
+{% block body %}
+    {% load crispy_forms_tags %}
+<form method="post" action="{% url 'projectMgr:upload_profile_pic' %}" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form | crispy}}
+<input type="submit" class="btn btn-success" value="Upload">
+</form>
+    {% load static %}
+
+
+{% endblock %}

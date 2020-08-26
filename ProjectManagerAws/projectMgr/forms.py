@@ -137,3 +137,15 @@ class createComment(forms.Form):
     '''
     Comment = forms.CharField(widget=forms.TextInput,max_length=500)
     pass
+
+
+class uploadImage(forms.Form):
+    '''
+    title
+    file
+    '''
+    title = forms.CharField(max_length=100)
+    file = forms.FileField()
+
+class uploadProfilePic(forms.Form):
+    image = forms.FileField()

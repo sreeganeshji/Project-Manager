@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from . import views
+
 
 app_name = 'projectMgr'
 
@@ -53,6 +56,7 @@ urlpatterns = [
     path('<int:projectid>/<int:taskGroupId>/<int:commentid>/deleteComment',views.taskGroupDeleteComment,name="taskGroupDeleteComment"),
     path('<int:projectid>/<int:commentid>/deleteComment',views.projectDeleteComment,name='projectDeleteComment'),
     path('about/',views.about,name='about'),
-    path('userinfo',views.userinfo,name='userinfo'),
+    path('userinfo/',views.userinfo,name='userinfo'),
+    path('upload_profile_pic/',views.uploadProfilePic,name='upload_profile_pic'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

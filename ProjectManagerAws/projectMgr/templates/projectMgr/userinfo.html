@@ -3,9 +3,33 @@
 {% block body %}
 
 {#    Change email, password#}
-    <h3> Username: {{ thisUser.username }}</h3>
-    <h3>Email: {{ thisUser.email }}</h3>
-        <a href="{% url 'account_email' %}">Change email</a> </h4>
-    <h4><a href="{% url 'account_change_password' %}">Change password</a> </h4>
+
+<table class="table-condensed">
+    <tbody>
+    <tr>
+        <td><h5>Email</h5></td>
+        <td>{{thisUser.email}}</td>
+        <td><a>edit</a></td>
+    </tr>
+    <tr>
+        <td><h5>Username</h5></td>
+        <td>{{thisUser.username}}</td>
+    </tr>
+    <tr>
+        <td><h5>Profile picture</h5></td>
+        <td>
+            <div class="col-sm-2 text-center">
+                {% load static %}
+            {% if thisUser.profilePicture != None %}
+
+            <img src=/{{ thisUser.profilePicture }}  height="65" width="65" style=" border-radius: 5px" alt="">
+            {% else %}
+                <img src="{% static 'projectMgr/images/default_user.png' %}"  height="65" width="65" style=" border-radius: 5px" alt="">
+            {% endif %}        </div>
+        </td>
+        <td><a href="{% url 'projectMgr:upload_profile_pic' %}">Edit</a></td>
+    </tr>
+    </tbody>
+</table>
 
 {% endblock %}

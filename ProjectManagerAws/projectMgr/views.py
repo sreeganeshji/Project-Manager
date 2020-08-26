@@ -946,6 +946,37 @@ def userinfo(request: HttpRequest):
 
     return render(request,'projectMgr/userinfo.html',{'thisUser':request.user})
 
+def fileHandler(file, destination):
+
+    with open(destination,'wb+') as destination:
+        for chunk in file.chunks():
+            destination.write(chunk)
+
+
+def uploadProfilePic(request: HttpRequest):
+    if not request.user.is_authenticated:
+        return redirect('projectMgr:homepage')
+
+    form = forms.uploadProfilePic(request.POST, request.FILES)
+
+
+    if form.is_valid():
+
+        from django.conf import settings
+
+        # print(settings.MEDIA_ROOT, 'media root')
+        # path = settings.MEDIA_URL
+        path = '/media/projectMgr/'+request.FILES['image']._get_name()
+        thisUserObject = models.User.objects.get(id=request.user.id)
+        thisUserObject.profilePicture = path
+        thisUserObject.save()
+        print(request.FILES['image']._get_name())
+        fileHandler(request.FILES['image'], path)
+
+        return redirect('projectMgr:userinfo')
+
+    return render(request, 'projectMgr/uploadImage.html',{'thisUser':request.user, 'form':form})
+
 #rest framework viewsets
 
 class UserViewSet(viewsets.ModelViewSet):
