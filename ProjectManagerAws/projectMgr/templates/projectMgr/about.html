@@ -4,26 +4,32 @@
 {% endblock %}
 {% block body %}
     <h3 style="text-align: center; color: #2c4096">Project management tool</h3>
-    <h4 style="text-align: center; color: #6d84b4">Collaborative tool to interactively work on tasks</h4>
+    <h4 style="text-align: center; color: #6d84b4">Collaborative tool to work on projects</h4>
     <hr>
 
-<p style="font-size: large">My name is Ganesh, I created this site because I wanted a progress tracker to help me get organized and prioritize my responsibilities.</p>
-<p style="font-size: large;">You can find me at sree.ganeshji@gmail.com and <a href="https://www.linkedin.com/in/sreeganeshji/">Linkedin</a>. </p>
+    <h4 style="display: inline-block">Github:</h4>
+<p style="font-size: large; display: inline-block">This project can be found on github  <a href="https://github.com/sreeganeshji/Project-Manager">here</a>. </p>
+<br>
+    <h4 style="display: inline-block">Contact:</h4>
+    <p style="font-size: large; display: inline-block">I can be reached at <a href="https://www.linkedin.com/in/sreeganeshji/">Linkedin</a> and at sree.ganeshji@gatech.edu. </p>
 
-    <h3>Usage:</h3>
+    <h3>Overview and usage:</h3>
     <hr>
-    <h4>Step1: Create a project</h4>
+<p style="font-size: large">The basic elements of this tool are tasks, task-groups and projects in the increasing order of hierarchy. </p>
+    <h4>Create a project</h4>
     <p style="font-size: large">Select  <a href="{% url 'projectMgr:projectCreate' %}" class="btn btn-primary">Project <span class="glyphicon glyphicon-plus"></span> </a> from the homepage to create a new project. Provide the name and description. Proceed to adding your teammates. You can search based on their username or email from all the users. Once finished, press 'Done'.</p>
     <p style="font-size: large">The tasks that are part of the project can be grouped into task groups. You can create task groups in step2.</p>
     <hr>
-    <h4>Step2: Create a task group</h4>
+    <h4>Create a task group</h4>
     <p style="font-size: large">From the project detail page, select     <a href="" class="btn btn-primary">Task Group <span class="glyphicon glyphicon-plus"></span> </a> to create a new task group. Provide the details and proceed to adding your teammates from the project. A task group can contain many tasks.
 </p>
     <hr>
-    <h4>Step3: Create a task</h4>
+    <h4>Create a task</h4>
     <p style="font-size: large">Select     <a href="" class="btn btn-primary">Task <span class="glyphicon glyphicon-plus"></span> </a> to create a new task. There are multiple stages for a task including "opened","in progress", "in review", "closed". Tasks can also be prioritized. All the tasks in a task group will be presented in the 'kanban board'
     format in the task group detail page.
 </p>
+    <h3>Privacy policy</h3>
+    <p>This site does not collect any additional information or use the information in any way. Since it is still in development, it might be open to security vulnerabilities which will be constantly improved. </p>
 {% endblock %}
 
 

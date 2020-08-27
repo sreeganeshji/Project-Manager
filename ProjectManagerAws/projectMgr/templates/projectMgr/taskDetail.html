@@ -11,7 +11,8 @@
 {% endblock %}
 
 {% block heading %}
-    <h3 style="display: inline-block;margin-right: 10px" ><span class="glyphicon glyphicon-th-list"></span> {{ task.name }} <h5 style="display: inline-block"><a href="{% url 'projectMgr:taskDetailEdit' project.id taskGroup.id task.id %}"> <i class="glyphicon glyphicon-pencil"></i></a> </h5></h3>
+    <h4 style="display: inline-block"><span class="glyphicon glyphicon-th-list"></span> Task</h4>
+    <h3 style="display: inline-block;margin-right: 10px" > {{ task.name }} <h5 style="display: inline-block"><a href="{% url 'projectMgr:taskDetailEdit' project.id taskGroup.id task.id %}"> <i class="glyphicon glyphicon-pencil"></i></a> </h5></h3>
     <hr>
 {% endblock %}
 

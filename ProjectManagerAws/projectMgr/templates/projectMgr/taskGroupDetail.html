@@ -9,7 +9,8 @@
 {% endblock %}
 
 {% block heading %}
-    <h3 style="display: inline-block;margin-right: 10px" ><span class="glyphicon glyphicon-th"></span> {{ taskGroup.name }} <h5 style="display: inline-block"><a href="{% url 'projectMgr:taskGroupDetailEdit' project.id taskGroup.id %}"> <i class="glyphicon glyphicon-pencil"></i></a> </h5></h3>
+    <h4 style="display: inline-block"><span class="glyphicon glyphicon-th"></span> Task-Group</h4>
+    <h3 style="display: inline-block;margin-right: 10px" > {{ taskGroup.name }} <h5 style="display: inline-block"><a href="{% url 'projectMgr:taskGroupDetailEdit' project.id taskGroup.id %}"> <i class="glyphicon glyphicon-pencil"></i></a> </h5></h3>
     <hr>
 {% endblock %}
 
@@ -25,28 +26,34 @@
 
 
 <h4>Kanban Board:</h4>
+
+
     <div class="board">
     <div class="openedBoard">
     <h3>Opened Issues</h3>
     {% for task in OpenIssue %}
         {% if task.priority == "Urgent" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="urgentcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-danger" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "High" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="highcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-warning" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "Normal" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="normalcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-primary" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "Low" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="lowcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-secondary" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% endif %}
@@ -56,49 +63,58 @@
     <h3>In progress</h3>
     {% for task in InProgress %}
         {% if task.priority == "Urgent" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="urgentcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-danger" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "High" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="highcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-warning" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "Normal" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="normalcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-primary" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "Low" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="lowcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-secondary" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% endif %}
     {% endfor %}
+
     </div>
     <div class="inreviewBoard">
     <h3>In review</h3>
     {% for task in InReview %}
         {% if task.priority == "Urgent" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="urgentcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-danger" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "High" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="highcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-warning" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "Normal" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="normalcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-primary" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "Low" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="lowcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-secondary" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% endif %}
@@ -108,23 +124,27 @@
     <h3>Closed Issues</h3>
     {% for task in ClosedIssue %}
         {% if task.priority == "Urgent" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="urgentcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-danger" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "High" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="highcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-warning" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "Normal" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="normalcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-primary" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% elif task.priority == "Low" %}
-        <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
-        <input class="lowcard" type="submit" value={{ task.name }}>
+
+            <form action="{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}">
+        <input class="btn btn-secondary" style="width: 98%; margin: 1%; " type="submit" value={{ task.name }}>
         </form>
 
         {% endif %}
@@ -133,7 +153,7 @@
     </div>
     </div>
 
-    <p>Task priority:<span style="color: #d8dfea" class="glyphicon glyphicon-stop"></span> Low <span style="color: #afbdd4" class="glyphicon glyphicon-stop"></span> Normal <span style="color: #6d84b4" class="glyphicon glyphicon-stop"></span> High <span style="color: #3b5998" class="glyphicon glyphicon-stop"></span> Urgent</p>
+    <p>Task priority:<div class="text-secondary" style="display: inline-block"><span class="glyphicon glyphicon-stop"></span></div> Low <div class="text-primary" style="display: inline-block"><span class="glyphicon glyphicon-stop"></span></div> Normal  <div class="text-warning" style="display: inline-block"><span class="glyphicon glyphicon-stop"></span></div> High  <div class="text-danger" style="display: inline-block"><span class="glyphicon glyphicon-stop"></span></div> Urgent </p>
 
 <hr>
         {% load crispy_forms_tags %}

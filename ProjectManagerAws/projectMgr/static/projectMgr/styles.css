@@ -351,67 +351,80 @@ color: #478ee2;
 
 .openedBoard{
   text-align: center;
-  color: #2c4096;
+  color: white;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   width: 25%;
   height: 500px;
   float: left;
   overflow: scroll;
-  background-color: #d8dfea;
+  background-color: white;
   margin-bottom: 10px;
+  border-radius: 10px;
 }
 .openedBoard>h3{
-background-color: white;
+background-color: lightgray;
   /*border-radius: 5px;*/
   padding: 3px;
+  font-size: large;
+  color: black;
 }
 .inprogressBoard>h3{
-  background-color: white;
+  background-color: lightgray;
   /*border-radius: 5px;*/
   padding: 3px;
+  font-size: large;
+  color: black;
 }
 .inprogressBoard{
   text-align: center;
-  color: #2c4096;
+  color: white;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   width: 25%;
   height: 500px;
   float: left;
   overflow: scroll;
-  background-color: #afbdd4;
+  background-color: white;
   margin-bottom: 10px;
+  border-radius: 10px;
 }
 .inreviewBoard{
   text-align: center;
-  color: #2c4096;
+  color: white;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   width: 25%;
   height: 500px;
   float: left;
   overflow: scroll;
-  background-color: #6d84b4;
+  background-color: white;
   margin-bottom: 10px;
+  border-radius: 10px;
 }
 .inreviewBoard>h3{
-  background-color: white;
+  background-color: lightgray;
   /*border-radius: 5px;*/
   padding: 3px;
+  font-size: large;
+  color: black;
+
 }
 .closedBoard{
   text-align: center;
-  color: #2c4096;
+  color: white;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   width: 25%;
   height: 500px;
   float: left;
   overflow: scroll;
-  background-color: #3b5998;
+  background-color: white;
   margin-bottom: 10px;
+  border-radius: 10px;
 }
 .closedBoard>h3{
-  background-color: white;
+  background-color: lightgray;
   /*border-radius: 5px;*/
   padding: 3px;
+  font-size: large;
+  color: black;
 }
 
 .urgentcard{

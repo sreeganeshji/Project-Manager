@@ -59,9 +59,9 @@ class chooseMates(forms.Form):
 
 class editTask(forms.Form):
     name = forms.CharField(max_length=100,required=False)
-    description = forms.CharField(widget=forms.Textarea,empty_value="description default")
+    description = forms.CharField(widget=forms.Textarea,empty_value="description default", required=False)
     stage = forms.ChoiceField(choices=[['OpenedIssue','OpenedIssue'],['InProgress','InProgress'],['InReview','InReview'],['ClosedIssue','ClosedIssue']])
-    priority = forms.ChoiceField(choices=[["Urgent", "Urgent"], ['High', 'High'], ['Normal', 'Normal'], ['low', 'low']])
+    priority = forms.ChoiceField(choices=[["Urgent", "Urgent"], ['High', 'High'], ['Normal', 'Normal'], ['Low', 'Low']])
     def __init__(self,*args,nameVal=None,descriptionVal=None,stageVal=None,priority=None,**kwargs):
         super().__init__(*args,**kwargs)
         print("name is ",nameVal)

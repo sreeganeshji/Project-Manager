@@ -56,17 +56,18 @@
 
 {% load activity_tags i18n %}
 
+          <table class="table">
+  <thead class="thead-light">
+
+  </thead>
+  <tbody>
+
     {% for messages in listSet %}
 {#        {% for message in messages %}#}
 {#            {% display_action message %}#}
 {#            {% endfor %}#}
 
 
-          <table class="table">
-  <thead class="thead-light">
-
-  </thead>
-  <tbody>
 
   {% for message in messages %}
       <tr>
@@ -81,14 +82,15 @@
 
   {% endfor %}
 
-  </tbody>
-</table>
 
     {% endfor %}
 {#    {% for followingObject in following %}#}
 {#    followingObject.name#}
 {#    {% endfor %}#}
 
+
+  </tbody>
+</table>
 {% endblock %}
 
 {% block sidenav %}

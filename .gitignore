@@ -1,3 +1,4 @@
 
 env_django/bin/__pycache__/django-admin.cpython-38 2.pyc
 *.pyc
+*.pyc

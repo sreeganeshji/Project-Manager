@@ -14,7 +14,8 @@
 {% endblock %}
 
 {% block heading %}
-    <h3 style="display: inline-block;margin-right: 10px" ><span class="glyphicon glyphicon-th-large"></span> {{ project.name }} <h5 style="display: inline-block"><a href="{% url 'projectMgr:projectDetailEdit' project.id %}"> <i class="glyphicon glyphicon-pencil"></i></a> </h5></h3>
+    <h4 style="display: inline-block"><span class="glyphicon glyphicon-th-large"></span> Project</h4>
+    <h3 style="display: inline-block;margin-right: 10px" > {{ project.name }} <h5 style="display: inline-block"><a href="{% url 'projectMgr:projectDetailEdit' project.id %}"> <i class="glyphicon glyphicon-pencil"></i></a> </h5></h3>
     <hr>
 {% endblock %}
 
