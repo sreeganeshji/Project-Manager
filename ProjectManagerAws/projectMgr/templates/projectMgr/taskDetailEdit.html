@@ -24,8 +24,11 @@
 
     <input type="submit" class="btn btn-primary" value="Done">
     </form>
+<hr>
+    <h5>Created:</h5>
+    {% if thisUser == task.reporter %} Me {% else %} {{task.reporter.username }} {% endif %}
 
-
+        , {{ task.created }}
 {% endblock %}
 
 {% block sidenav %}
@@ -42,6 +45,7 @@
             {% endif %}
         {% endfor %}
     <br>
+
 
 {% endblock %}
 

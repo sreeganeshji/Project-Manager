@@ -28,9 +28,7 @@
     <div class="row">
         <div class="col-sm-4">
             <p>Priority: {{ task.priority }}</p>
-             {% if thisUser == task.reporter %} Me {% else %} {{task.reporter.username }} {% endif %}
 
-        , {{ task.created }}
         </div>
     </div>
     <hr>

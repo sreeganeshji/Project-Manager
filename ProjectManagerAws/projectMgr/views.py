@@ -745,6 +745,8 @@ def taskCreate(request: HttpRequest, projectid, taskGroupId):
             priority = form.cleaned_data['priority']
             newTask = models.Task.objects.create(name=taskName, description=description, taskGroup=thisTaskGroup,
                                                  reporter=request.user, stage=stage,priority=priority)
+            newTask.people.add(request.user)
+            newTask.save()
             thisTaskGroup.task_set.add(newTask)
             thisTaskGroup.save()
 
@@ -936,6 +938,7 @@ def taskGroupCreate(request: HttpRequest, projectid):
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
             newTaskGroup = models.TaskGroup.objects.create(name=name, description=description, creator=request.user,created=datetime.now)
+            newTaskGroup.people.add(request.user)
             newTaskGroup.save()
             thisProject = models.Project.objects.get(id=projectid)
             thisProject.taskgroup_set.add(newTaskGroup)

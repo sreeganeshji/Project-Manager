@@ -3,7 +3,7 @@
 
 {% block body %}
 {% if user.task_set.count > 0 %}
-
+ <h4>Tasks <span class="glyphicon glyphicon-th-list"></span></h4>
     <table class="table">
   <thead class="thead-light">
     <tr>
@@ -15,7 +15,6 @@
     </tr>
   </thead>
   <tbody>
-{{ user.task_set.count }}
 
      {% for task in user.task_set.all %}
 
@@ -72,7 +71,11 @@
   {% for message in messages %}
       <tr>
 
-   <td>{% display_action message %}</td>
+      {% if message.action_object %}
+   <td>{{message.actor}} {{ message.verb }} {{ message.action_object.name }} in {{ message.target.name }} <small style="color: #777777">{{ message.timestamp }}</small> </td>
+      {% else %}
+   <td>{{message.actor}} {{ message.verb }} {{ message.target.name }} <small style="color: #777777">{{ message.timestamp }}</small></td>
+      {% endif %}
 
     </tr>
 

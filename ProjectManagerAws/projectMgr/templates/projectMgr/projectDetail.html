@@ -23,14 +23,7 @@
     <div >
     <p>{{ project.description }}</p>
     </div>
-    <hr>
-    <div class="row">
-        <div class="col-sm-4">
-             {% if thisUser == project.createdBy %} Me {% else %} {{project.createdBy.username }} {% endif %},
 
-        {{ project.created }}
-        </div>
-    </div>
     <hr>
 
     {% load crispy_forms_tags %}
