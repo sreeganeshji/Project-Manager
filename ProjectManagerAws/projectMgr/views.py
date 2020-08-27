@@ -202,6 +202,7 @@ def followProject(request:HttpRequest, projectid):
     else:
         follow(request.user, thisProject)
 
+
     return redirect('projectMgr:projectDetail',projectid=projectid)
 
 def projectDetailEdit(request: HttpRequest, projectid):
@@ -251,6 +252,19 @@ def taskDetailComment(request: HttpRequest, projectid, taskGroupId, taskid):
 
     return redirect('projectMgr:taskDetail', projectid=projectid, taskGroupId=taskGroupId, taskid=taskid)
 
+def followTaskGroup(request:HttpRequest, projectid, taskGroupId):
+    if not request.user.is_authenticated:
+        return redirect('projectMgr:homepage')
+    thisProject = models.Project.objects.get(id=projectid)
+    thisTaskGroup = models.TaskGroup.objects.get(id=taskGroupId)
+    if thisTaskGroup in following(request.user, models.TaskGroup):
+        unfollow(request.user, thisTaskGroup)
+    else:
+        follow(request.user, thisTaskGroup)
+        # action.send(request.user,verb='started following', action_object=None, target=thisTaskGroup)
+        # action.send(request.user, verb='started following', action_object=thisTaskGroup, target=thisProject)
+
+    return redirect('projectMgr:taskGroupDetail',projectid=projectid, taskGroupId=taskGroupId)
 
 def taskGroupDetailEdit(request: HttpRequest, projectid, taskGroupId):
     if not request.user.is_authenticated:
@@ -295,6 +309,7 @@ def taskGroupDetailComment(request: HttpRequest, projectid, taskGroupId):
             thisTaskGroup.comment.add(newComment)
             thisTaskGroup.save()
             # comment on taskgroup activitiy
+            action.send(request.user, verb="commented", target=thisTaskGroup)
             action.send(request.user, verb="commented in ", action_object=thisTaskGroup,
                         target=models.Project.objects.get(id=projectid))
 
@@ -349,9 +364,25 @@ def taskDetail(request: HttpRequest, projectid, taskGroupId, taskid):
 
     return render(request, 'projectMgr/taskDetail.html',
                   {'project': thisProject, 'taskGroup': thisTaskGroup, 'task': thisTask, 'commentForm': commentForm,
-                   'commentSet': commentSet, 'thisUser': thisUser,'stream':stream})
+                   'commentSet': commentSet, 'thisUser': thisUser, 'stream':stream})
 
     pass
+
+def followTask(request:HttpRequest, projectid, taskGroupId, taskid):
+    if not request.user.is_authenticated:
+        return redirect('projectMgr:homepage')
+    thisProject = models.Project.objects.get(id=projectid)
+    thisTaskGroup = models.TaskGroup.objects.get(id = taskGroupId)
+    thisTask = models.Task.objects.get(id=taskid)
+    if thisTask in following(request.user, models.Task):
+        unfollow(request.user, thisTask)
+    else:
+        follow(request.user, thisTask)
+        # action.send(request.user, verb="started following", target=thisTask)
+        # action.send(request.user, verb="started following", action_object=thisTask, target=thisProject)
+        # action.send(request.user, verb="started following", action_object=thisTask, target=thisTaskGroup)
+
+    return redirect('projectMgr:taskDetail',projectid=projectid, taskGroupId=taskGroupId, taskid=taskid)
 
 
 def projectCreate(request: HttpRequest):
@@ -705,7 +736,6 @@ def taskCreate(request: HttpRequest, projectid, taskGroupId):
     thisTaskGroup = models.TaskGroup.objects.get(id=taskGroupId)
 
 
-
     if request.method == 'POST':
         form = forms.createTask(request.POST)
         if form.is_valid():
@@ -717,11 +747,16 @@ def taskCreate(request: HttpRequest, projectid, taskGroupId):
                                                  reporter=request.user, stage=stage,priority=priority)
             thisTaskGroup.task_set.add(newTask)
             thisTaskGroup.save()
+
             # create task activitiy
             action.send(request.user, verb="added task", action_object=newTask,target=thisTaskGroup)
+            if "Choose team" in request.POST:
+                return redirect("projectMgr:chooseTaskMates", projectid=projectid, taskGroupId=taskGroupId,
+                                taskid=newTask.id)
+            else:
+                return redirect("projectMgr:taskDetail", projectid=projectid, taskGroupId=taskGroupId,
+                                taskid=newTask.id)
 
-            return redirect("projectMgr:chooseTaskMates", projectid=projectid, taskGroupId=taskGroupId,
-                            taskid=newTask.id)
     else:
         form = forms.createTask()
 

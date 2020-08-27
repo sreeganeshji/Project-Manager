@@ -83,9 +83,9 @@
 
     {% endfor %}
 
-<hr>
+{#<hr>#}
     {% load activity_tags i18n %}
-    {% follow_url project %}
+{#    {% follow_url project %}#}
 {#    <h4>Activity <a href="{% follow_url project %}">#}
         <h4>Activity <a href="{% url 'projectMgr:followProject' project.id %}">
     {% if thisUser|is_following:project %}
@@ -109,7 +109,8 @@
   {% for action in stream %}
       <tr>
 
-   <td>{% display_action action %}</td>
+{#   <td>{% display_action action %}</td>#}
+      <td>{{action.actor}} {{ action.verb }} <a href="{% url 'projectMgr:projectDetail' project.id %}">{{ action.target.name }}</a> {{ action.timestamp }}</td>
 
     </tr>
 

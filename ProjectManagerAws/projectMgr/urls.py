@@ -59,5 +59,7 @@ urlpatterns = [
     path('userinfo/',views.userinfo,name='userinfo'),
     path('upload_profile_pic/',views.uploadProfilePic,name='upload_profile_pic'),
     path('<int:projectid>/followProject',views.followProject, name='followProject'),
+    path('<int:projectid>/<int:taskGroupId>/followTaskGroup', views.followTaskGroup, name='followTaskGroup'),
+    path('<int:projectid>/<int:taskGroupId>/<int:taskid>/followTask', views.followTask, name='followTask'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

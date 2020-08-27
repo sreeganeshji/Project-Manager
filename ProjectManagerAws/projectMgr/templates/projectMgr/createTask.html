@@ -19,8 +19,12 @@
 {#    <h3>{{ form.description }}</h3>#}
     {{ form|crispy }}
     <input type="submit" class="btn btn-primary" value="choose team">
+    <input type="submit" class="btn btn-success" name="Done" value="Done">
+
 
 </form>
+{#        <button class="btn btn-primary" onclick="window.location.href = '{% url 'projectMgr:taskDetail' project.id taskGroup.id task.id %}';">Done</button>#}
+
 
 {% endblock %}
 
