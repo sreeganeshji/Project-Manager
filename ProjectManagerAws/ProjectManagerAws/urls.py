@@ -38,7 +38,7 @@ urlpatterns = [
     path('',include('projectMgr.urls')),
 
     path('', include(router.urls)),
-    url('^activity/',include('actstream.urls')),
+    # url('^activity/',include('actstream.urls')),
 
     #rest auth
     url(r'^rest-auth/',include('rest_auth.urls')),
