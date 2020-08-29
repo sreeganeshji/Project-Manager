@@ -27,7 +27,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ['127.0.0.1','proj-mgr-aws.tsihnmkubk.us-west-2.elasticbeanstalk.com','0.0.0.0','dualstack.awseb-e-2-awsebloa-1cjtopb37kpm2-446718152.us-west-2.elb.amazonaws.com','projmgrtool.com',
 #                  'django-env.eba-2wjaqpra.us-west-1.elasticbeanstalk.com']
-ALLOWED_HOSTS = ['projmgrtool.com','Project-Manager-dev.us-west-1.elasticbeanstalk.com','127.0.0.1']
+ALLOWED_HOSTS = ['projmgrtool.com','Project-Manager-dev.us-west-1.elasticbeanstalk.com','0.0.0.0','127.0.0.1']
 
 # Application definition
 

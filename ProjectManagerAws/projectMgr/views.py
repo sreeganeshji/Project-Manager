@@ -997,10 +997,15 @@ def userinfo(request: HttpRequest):
 
 def fileHandler(file, destination):
 
-    with open(destination,'wb+') as destination:
+    with open(destination,'wb+') as dest:
         for chunk in file.chunks():
-            destination.write(chunk)
+            dest.write(chunk)
 
+def deleteFile(path):
+
+    import os
+    if (path and os.path.exists(path)):
+        os.remove(path)
 
 def uploadProfilePic(request: HttpRequest):
     if not request.user.is_authenticated:
@@ -1015,9 +1020,14 @@ def uploadProfilePic(request: HttpRequest):
 
         # print(settings.MEDIA_ROOT, 'media root')
         # path = settings.MEDIA_URL
-        path = '/media/projectMgr/'+request.FILES['image']._get_name()
+        #delete previous image
+        # print('media root',settings.MEDIA_ROOT)
+        path = settings.MEDIA_ROOT+'/projectMgr/'+request.FILES['image']._get_name()
         thisUserObject = models.User.objects.get(id=request.user.id)
-        thisUserObject.profilePicture = path
+        currentPath = thisUserObject.profilePicture
+        deleteFile(currentPath)
+        thisUserObject.profilePicture = '/media/projectMgr/'+request.FILES['image']._get_name()
+        print(thisUserObject.profilePicture)
         thisUserObject.save()
         print(request.FILES['image']._get_name())
         fileHandler(request.FILES['image'], path)

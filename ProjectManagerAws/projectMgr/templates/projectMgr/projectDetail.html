@@ -48,7 +48,7 @@
         <div class="col-sm-2 text-center">
             {% if comment.createdBy.profilePicture != None %}
 
-            <img src=/{{ comment.createdBy.profilePicture }}  height="65" width="65" style=" border-radius: 5px" alt="">
+            <img src={{ comment.createdBy.profilePicture }}  height="65" width="65" style=" border-radius: 5px" alt="">
             {% else %}
                 <img src="{% static 'projectMgr/images/default_user.png' %}"  height="65" width="65" style=" border-radius: 5px" alt="">
             {% endif %}

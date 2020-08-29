@@ -22,7 +22,7 @@
                 {% load static %}
             {% if thisUser.profilePicture != None %}
 
-            <img src=/{{ thisUser.profilePicture }}  height="65" width="65" style=" border-radius: 5px" alt="">
+            <img src={{ thisUser.profilePicture }}  height="65" width="65" style=" border-radius: 5px" alt="">
             {% else %}
                 <img src="{% static 'projectMgr/images/default_user.png' %}"  height="65" width="65" style=" border-radius: 5px" alt="">
             {% endif %}        </div>
