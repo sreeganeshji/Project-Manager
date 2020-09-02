@@ -89,8 +89,8 @@ class editTaskGroup(forms.Form):
 
 
 class editProject(forms.Form):
-    name = forms.CharField(max_length=100, required=False)
-    description = forms.CharField(widget=forms.Textarea, empty_value="description default")
+    name = forms.CharField(max_length=100, required=True)
+    description = forms.CharField(widget=forms.Textarea, empty_value="description default", required=False)
 
     def __init__(self, *args, nameVal=None, descriptionVal=None, **kwargs):
         super().__init__(*args, **kwargs)
