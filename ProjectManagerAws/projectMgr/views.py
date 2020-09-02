@@ -161,7 +161,8 @@ def userHome(request: HttpRequest):
     listSet = []
     followingObjects = following(request.user)
     for object in following(request.user):
-        listSet.append(target_stream(object)[:3])
+        if object:
+            listSet.append(target_stream(object)[:3])
 
 
 
@@ -214,7 +215,10 @@ def projectDetailEdit(request: HttpRequest, projectid):
     if request.method == "POST":
         form = forms.editProject(request.POST, nameVal=thisProject.name, descriptionVal=thisProject.description)
 
-        print('form start', form, 'form end')
+        if "Delete Project" in request.POST:
+            thisProject.delete()
+
+            return redirect("projectMgr:userhome")
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
