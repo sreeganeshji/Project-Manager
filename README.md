@@ -7,12 +7,21 @@ Web application for collaborative project management and issue tracking.
 * Follow the events pertaining to each **Project**, **Task-Group** and **Task** which will be published on the homepage. 
 * Provides REST API endpoints which allows for third-party integration.
 # Preview
-**Homepage:**
-<image src="https://raw.githubusercontent.com/sreeganeshji/Project-Manager/master/Illustrations/userhome.jpg" width=2200>
-**Project:**
-<image src="https://raw.githubusercontent.com/sreeganeshji/Project-Manager/master/Illustrations/project.jpg" width=2200>
 **Task-Group:**
 <image src="https://raw.githubusercontent.com/sreeganeshji/Project-Manager/master/Illustrations/taskGroup.jpg" width=2200>
+* The tasks are presented on the kanban board based on their stage and colored based on their priority.
+**Project:**
+<image src="https://raw.githubusercontent.com/sreeganeshji/Project-Manager/master/Illustrations/project.jpg" width=2200>
+* The project page lists all the teammates on the sidebar.
+* You can interact with the team on the comments section.
+**Homepage:**
+<image src="https://raw.githubusercontent.com/sreeganeshji/Project-Manager/master/Illustrations/userhome.jpg" width=2200>
+* The homepage lists all the tasks that are assigned to you.
+* Below, the notification presents all the events that you follow.
+
+
+
+
 
 Implemented with the [Django Activity Stream](https://django-activity-stream.readthedocs.io/en/latest/) framework.
 * Secure authentication supported by the [Django allauth](https://github.com/pennersr/django-allauth) framework.
